@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+beanie
+motor
+pydantic
+python-jose
+email-validator
+bcrypt
+passlib[bcrypt]
+python-dotenv
+pyjwt
