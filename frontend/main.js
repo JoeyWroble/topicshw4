@@ -156,5 +156,28 @@ const getSleeps = () => {
 
 
 (() => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("Please log in to continue.");
+    window.location.href = "/auth.html";
+    return;
+  }
+
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  const userEmail = payload.user_name;
+
+  const userStatus = document.getElementById('user-status');
+  userStatus.innerHTML = `
+    <span class="me-3"><strong>${userEmail}</strong></span>
+    <button id="logout-btn" class="btn btn-outline-danger btn-sm">Logout</button>
+  `;
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    localStorage.removeItem("token");
+    window.location.href = "/auth.html";
+  });
+
   getSleeps();
 })();
+

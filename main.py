@@ -11,9 +11,10 @@ from db import init as init_db
 
 app = FastAPI()
 
+# solve CORS issues
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or replace "*" with ["http://localhost:3000"] for stricter control
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
